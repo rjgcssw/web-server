@@ -29,6 +29,9 @@
 				login_name = #{loginName}
 			</if>
 		</where>
+
+
+
 	</select>
 	<insert id="insert">
 		<if test="userEntity != null">
