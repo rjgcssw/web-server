@@ -9,7 +9,7 @@
 		<result column="email" property="email" />
 	</resultMap>
 	<!-- 获取user列表 -->
-	<select id="usersList" resultMap="userMap">
+	<!--<select id="usersList" resultMap="userMap">
 	<![CDATA[select * from sys_user]]>
 		<where>
 			<if test="loginName != null and loginName != ''">
@@ -20,6 +20,9 @@
 		<if test="pageSize != null and start != null ">
 			limit #{start},#{pageSize}
 		</if>
+	</select>-->
+	<select id="usersList" resultMap="userMap">
+	 select * from sys_user order by id desc
 	</select>
 	<!-- 获取user列表的总量 -->
 	<select id="usersSize" resultType="Integer">  

@@ -4,8 +4,12 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.wanghuan.dao.UserDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +27,9 @@ import com.wanghuan.service.sys.UserService;
 public class UserController {
 
 	private Logger log = LoggerFactory.getLogger(UserController.class);
+
+	@Autowired
+	private UserDao userDao;
 
 	@Resource(name = "userServiceImpl")
 	private UserService userService;
@@ -43,12 +50,18 @@ public class UserController {
 	 * @return
 	 */
 	@GetMapping("/users")
-	public PageResult usersList(String loginName, int pageSize, int page) {
-		PageResult pageResult = new PageResult();
-		pageResult.setData(userService.usersList(loginName, pageSize, page * pageSize));
-		pageResult.setTotalCount(userService.usersSize(loginName, pageSize, page * pageSize));
+	public PageInfo<UserEntity> usersList(String loginName, int pageSize, int page) {
+
+
+		List<UserEntity> aa = userService.usersList(loginName,pageSize,page);
+		PageInfo<UserEntity> pageinfo = new PageInfo<UserEntity>(aa);
+
+		//PageResult pageResult = new PageResult();
+		//pageResult.setData(userService.usersList(loginName, pageSize, page));
+		//pageResult.setTotalCount(userService.usersSize(loginName, pageSize, page * pageSize));
+		//List<UserEntity> aa = userDao.usersList();
 		log.debug("The method is ending");
-		return pageResult;
+		return pageinfo;
 	}
 
 	/**

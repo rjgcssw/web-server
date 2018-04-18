@@ -22,3 +22,10 @@ logging:
     org.springframework.web: DEBUG
     org.springframework.security: DEBUG
     com.wanghuan: DEBUG
+
+#配置分页插件pagehelper
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql

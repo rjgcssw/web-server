@@ -2,6 +2,7 @@ package com.wanghuan.service.impl.sys;
 
 import java.util.List;
 
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -32,8 +33,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<UserEntity> usersList(String loginName, int pageSize, int start) {
-		return userDao.usersList( loginName,  pageSize,  start);
+	public List<UserEntity> usersList(String loginName, int pageSize, int page) {
+		PageHelper.startPage(page,pageSize);
+		return userDao.usersList();
 	}
 
 	@Override
