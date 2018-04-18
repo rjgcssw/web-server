@@ -52,10 +52,8 @@ public class UserController {
 	@GetMapping("/users")
 	public PageInfo<UserEntity> usersList(String loginName, int pageSize, int page) {
 
-
 		List<UserEntity> list = userService.usersList(loginName,pageSize,page);
 		PageInfo<UserEntity> pageinfo = new PageInfo<UserEntity>(list);
-
 		log.debug("The method is ending");
 		return pageinfo;
 	}
