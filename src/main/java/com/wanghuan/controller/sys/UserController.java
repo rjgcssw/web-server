@@ -53,13 +53,9 @@ public class UserController {
 	public PageInfo<UserEntity> usersList(String loginName, int pageSize, int page) {
 
 
-		List<UserEntity> aa = userService.usersList(loginName,pageSize,page);
-		PageInfo<UserEntity> pageinfo = new PageInfo<UserEntity>(aa);
+		List<UserEntity> list = userService.usersList(loginName,pageSize,page);
+		PageInfo<UserEntity> pageinfo = new PageInfo<UserEntity>(list);
 
-		//PageResult pageResult = new PageResult();
-		//pageResult.setData(userService.usersList(loginName, pageSize, page));
-		//pageResult.setTotalCount(userService.usersSize(loginName, pageSize, page * pageSize));
-		//List<UserEntity> aa = userDao.usersList();
 		log.debug("The method is ending");
 		return pageinfo;
 	}

@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.wanghuan.model.sys.UserEntity;
 
-@Mapper
+
 public interface UserDao {
 
 	public ArrayList<UserEntity> select(@Param("userEntity") UserEntity userEntity);

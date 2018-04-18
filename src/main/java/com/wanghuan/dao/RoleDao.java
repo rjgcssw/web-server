@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.wanghuan.model.sys.RoleEntity;
 
-@Mapper
+
 public interface RoleDao {
 	/**
 	 * 获取role列表
